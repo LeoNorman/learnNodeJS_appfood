@@ -3,8 +3,11 @@ const express = require("express");
 const userController = require("../../controllers/user.controller");
 const restaurantController = require("../../controllers/restaurant.controller");
 const authController = require("../../controllers/auth.controller");
+const uploadController = require("../../controllers/upload.controller");
+
 const authorization = require("../../middlewares/authorization");
 const requiredRole = require("../../middlewares/requiredRole");
+const upload = require("../../middlewares/upload");
 
 // path v1: /api/v1
 const v1 = express.Router();
@@ -40,5 +43,8 @@ v1.post(
 // Định nghĩa các routers cho auth
 v1.post("/login", authController.login());
 v1.get("/profiles", authorization, authController.getProfile());
+
+// Định nghĩa router cho upload
+v1.post("/upload", upload.single("file"), uploadController.upload());
 
 module.exports = v1;

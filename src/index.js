@@ -4,6 +4,7 @@ const { AppError, handleErrors } = require("./helpers/error");
 
 const app = express();
 app.use(express.json());
+app.use(express.static("."))
 
 // Sync cái model của sequelize với DB
 sequelize.sync({ alter: true });

@@ -58,6 +58,9 @@ module.exports = (sequelize) => {
         type: DataTypes.ENUM("user", "merchant", "admin"),
         defaultValue: "user",
       },
+      avatar: {
+        type: DataTypes.STRING
+      }
     },
     {
       tableName: "users",

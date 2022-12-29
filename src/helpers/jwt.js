@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const configs = require("../config");
 
 const EXPIRES_IN = 60 * 60 * 12;
 
@@ -8,7 +9,7 @@ const generateToken = (payload) => {
       id: payload.id,
       email: payload.email,
     },
-    "cybersoft-node26",
+    configs.SECRET_KEY,
     {
       expiresIn: EXPIRES_IN,
     }
